@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Import</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <header>
+        <h1>Web Import</h1>
+        <span id="statusPill" class="pill">Ready</span>
+      </header>
+
+      <section class="section">
+        <div class="row">
+          <input id="videoUrl" type="url" placeholder="Video URL" />
+          <button id="importVideo" title="Import video">↓</button>
+        </div>
+
+        <select id="downloadType" class="hidden-select" aria-label="Download type">
+          <option value="video-audio" selected>Video + Audio</option>
+          <option value="audio">Audio only</option>
+          <option value="video">Video only</option>
+        </select>
+        <div class="button-grid three">
+          <button class="choice active" type="button" data-select="downloadType" data-value="video-audio">V+A</button>
+          <button class="choice" type="button" data-select="downloadType" data-value="audio">AUD</button>
+          <button class="choice" type="button" data-select="downloadType" data-value="video">VID</button>
+        </div>
+
+        <select id="videoQuality" class="hidden-select" aria-label="Video quality">
+          <option value="fast">Fastest preview</option>
+          <option value="480">Up to 480p</option>
+          <option value="720" selected>Up to 720p</option>
+          <option value="1080">Up to 1080p</option>
+          <option value="best">Best available</option>
+        </select>
+        <div class="button-grid five">
+          <button class="choice" type="button" data-select="videoQuality" data-value="fast">FAST</button>
+          <button class="choice" type="button" data-select="videoQuality" data-value="480">480</button>
+          <button class="choice active" type="button" data-select="videoQuality" data-value="720">720</button>
+          <button class="choice" type="button" data-select="videoQuality" data-value="1080">1080</button>
+          <button class="choice" type="button" data-select="videoQuality" data-value="best">MAX</button>
+        </div>
+
+        <div class="time-grid">
+          <input id="videoInPoint" type="text" inputmode="numeric" placeholder="IN 00:00" />
+          <input id="videoOutPoint" type="text" inputmode="numeric" placeholder="OUT 01:30" />
+        </div>
+
+        <div class="button-grid two">
+          <button id="pauseDownload" class="secondary" title="Pause or resume" disabled>⏸</button>
+          <button id="stopDownload" class="danger" title="Stop" disabled>■</button>
+        </div>
+
+        <div class="progress-wrap" aria-label="Download progress">
+          <div class="progress-meta">
+            <span id="progressLabel">Waiting</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="row">
+          <input id="imageUrl" type="url" placeholder="Image URL" />
+          <button id="importImageUrl" title="Import image">+</button>
+        </div>
+        <div class="button-grid two">
+          <button id="pasteImage" class="secondary" title="Paste copied image">PASTE</button>
+          <button id="openDownloads" class="secondary" title="Open downloads folder">FOLDER</button>
+        </div>
+      </section>
+
+      <section class="section options">
+        <label class="check">
+          <input id="insertTimeline" type="checkbox" checked />
+          <span>TIMELINE</span>
+        </label>
+        <label class="check">
+          <input id="videoOnlyProject" type="checkbox" />
+          <span>PROJECT</span>
+        </label>
+      </section>
+
+      <details id="activityDetails" class="section activity">
+        <summary>Log</summary>
+        <pre id="log"></pre>
+      </details>
+    </main>
+
+    <script src="./js/CSInterface.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
